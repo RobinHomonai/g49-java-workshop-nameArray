@@ -2,11 +2,14 @@ package se.robinh;
 
 import java.util.Arrays;
 
+// todo: Create a new class called NameRepository.
 public class NameRepository {
 
+    // todo: Inside NameRepository create a private static empty array of String called names.
     private static String[] names = new String[0];
 
     public static int getSize() {
+        // todo: Returns number of elements in the array.
         return names.length;
     }
 
