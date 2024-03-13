@@ -1,6 +1,6 @@
 package se.robinh;
 
-import org.w3c.dom.ls.LSOutput;
+import java.util.Arrays;
 
 public class NameRepository {
 
@@ -10,16 +10,18 @@ public class NameRepository {
         return names.length;
     }
 
-    public static void setNames(String[] names) {
+    public static void setNames(String[] additionalNames) {
         // todo: Send in an array that set the private static array. This should replace all existing names.
+        names = Arrays.copyOf(additionalNames, additionalNames.length);
     }
 
     public static void clear() {
         // todo: Should completely empty the array.
+        names = new String[0];
     }
 
     public static String[] findAll() {
         // todo: Return all names in a new array.
-        return null;
+        return Arrays.copyOf(names, names.length);
     }
 }
