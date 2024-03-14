@@ -2,34 +2,34 @@ package se.robinh;
 
 import java.util.Arrays;
 
-// todo: Create a new class called NameRepository.
+// Create a new class called NameRepository.
 public class NameRepository {
 
-    // todo: Inside NameRepository create a private static empty array of String called names.
+    // Inside NameRepository create a private static empty array of String called names.
     private static String[] names = new String[0];
 
     public static int getSize() {
-        // todo: Returns number of elements in the array.
+        // Returns number of elements in the array.
         return names.length;
     }
 
     public static void setNames(String[] addNames) {
-        // todo: Send in an array that set the private static array. This should replace all existing names.
+        // Send in an array that set the private static array. This should replace all existing names.
         names = Arrays.copyOf(addNames, addNames.length);
     }
 
     public static void clear() {
-        // todo: Should completely empty the array.
+        // Should completely empty the array.
         names = new String[0];
     }
 
     public static String[] findAll() {
-        // todo: Return all names in a new array.
+        // Return all names in a new array.
         return Arrays.copyOf(names, names.length);
     }
 
     public static String find(final String fullName) {
-        // todo: Returns name if found and null if not found.
+        // Returns name if found and null if not found.
         for (String name : names) {
             if (name.equals(fullName)) {
                 return name;
@@ -38,8 +38,38 @@ public class NameRepository {
         return null;
     }
 
+    public static String[] findByFirstName(final String firstName) {
+        // Searches the array trying to find all names that has passed in first name.
+        // Returns a String array containing all matches.
+        String[] matchingNames = new String[0];
+        for (String name : names) {
+            String[] nameSplit = name.split(" ");
+            if (nameSplit.length >= 1 && nameSplit[0].equals(firstName)) {
+                matchingNames = Arrays.copyOf(matchingNames, matchingNames.length + 1);
+                matchingNames[matchingNames.length - 1] = name;
+            }
+        }
+        return matchingNames;
+    }
+
+
+    public static String[] findByLastName(final String lastName) {
+        // todo: Searches the array trying to find all names that has passed in last name.
+        //  Returns a String array containing all matches.
+
+        return new String[0];
+    }
+
+    public static boolean update(final String original, final String updatedName) {
+        // todo: Should find a name and replace it with the new fullName if available.
+        //  Returns true if name was found and updated with the new name.
+        //  False if name could not be updated because name wasn't found or name was found but an existing name matching the updatedName already exists.
+        return false;
+    }
+
     public static boolean add(final String fullName) {
-        // todo: Should add a new name to the array. Returns true when name was added and false when the array contains the name.
+        //  Should add a new name to the array.
+        //  Returns true when name was added and false when the array contains the name.
         for (String name : names) {
             if (name.equals(fullName)) {
                 return false;
@@ -54,4 +84,5 @@ public class NameRepository {
         names = addNames;
         return true;
     }
+
 }
