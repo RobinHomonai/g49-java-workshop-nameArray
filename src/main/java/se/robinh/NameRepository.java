@@ -56,8 +56,15 @@ public class NameRepository {
     public static String[] findByLastName(final String lastName) {
         // todo: Searches the array trying to find all names that has passed in last name.
         //  Returns a String array containing all matches.
-
-        return new String[0];
+        String[] matchingNames = new String[0];
+        for (String name : names){
+            String[] nameSplit = name.split(" ");
+            if (nameSplit.length >= 2 && nameSplit[1].equals(lastName)) {
+                matchingNames = Arrays.copyOf(matchingNames, matchingNames.length + 1);
+                matchingNames[matchingNames.length - 1] = name;
+            }
+        }
+        return matchingNames;
     }
 
     public static boolean update(final String original, final String updatedName) {
