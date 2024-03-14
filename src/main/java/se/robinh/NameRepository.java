@@ -68,9 +68,18 @@ public class NameRepository {
     }
 
     public static boolean update(final String original, final String updatedName) {
-        // todo: Should find a name and replace it with the new fullName if available.
-        //  Returns true if name was found and updated with the new name.
-        //  False if name could not be updated because name wasn't found or name was found but an existing name matching the updatedName already exists.
+        // Should find a name and replace it with the new fullName if available.
+        // Returns true if name was found and updated with the new name.
+        // False if name could not be updated because name wasn't found or name was found but an existing name matching the updatedName already exists.
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equals(original)) {
+                if (find(updatedName) != null || !original.equals(updatedName)) {
+                    return false;
+                }
+                names[i] = updatedName;
+                return true;
+            }
+        }
         return false;
     }
 
@@ -92,4 +101,10 @@ public class NameRepository {
         return true;
     }
 
+    public static boolean remove(final String fullName) {
+        // todo: Should remove a name from the array.
+        //  Returns true if name was removed and false if the name was not removed for some reason.
+
+        return false;
+    }
 }
