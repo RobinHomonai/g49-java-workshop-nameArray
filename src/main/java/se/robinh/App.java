@@ -10,10 +10,11 @@ public class App {
     public static void runTest() {
         testFindByFirstName();
         testFindByLastName();
+        testUpdate();
     }
 
     public static void testFindByFirstName() {
-        // Test case for findByFirstName()
+        // Test cases for findByFirstName()
         NameRepository.setNames(new String[]{"Robin Homonai", "Tore Svensson", "Camilla Fredriksson"});
 
         String[] test1 = NameRepository.findByFirstName("Robin");
@@ -26,7 +27,7 @@ public class App {
     }
 
     public static void testFindByLastName() {
-        // Test case for findByLastName()
+        // Test cases for findByLastName()
         NameRepository.setNames(new String[]{"Robin Homonai", "Tore Svensson", "Svenne Svensson", "Camilla Fredriksson"});
 
         String[] test1 = NameRepository.findByLastName("Homonai");
@@ -43,5 +44,16 @@ public class App {
         System.out.println("Test 3 is set to Henriksson");
         System.out.println("Test 3 result should be an empty array, []");
         System.out.println("Result of Test 3: " + Arrays.toString(test3));
+    }
+
+    public static void testUpdate() {
+        // Test cases for update()
+        NameRepository.setNames(new String[]{"Robin Homonai", "Tore Svensson", "Svenne Svensson", "Camilla Fredriksson"});
+
+        boolean test1 = NameRepository.update("Robin Homonai", "Robin Odeholm");
+        System.out.println("Test 1 is set to Robin Odeholm");
+        System.out.println("Test 1 should be true");
+        System.out.println("Test 1 result :" + Arrays.toString(NameRepository.findAll()));
+
     }
 }
